@@ -48,8 +48,8 @@ async function translateText(text) {
       'commonJobParams': {'regionalVariant': 'en-US', 'mode': 'translate', 'browserType': 1},
       'timestamp': new Date().getTime(),
     },
-    'id':
-        Math.floor(10000000 + Math.random() * 90000000)
+    // 8桁の数字
+    'id': Math.floor(10000000 + Math.random() * 90000000)
   };
 
   try {
