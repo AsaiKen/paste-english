@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         const selectionStart = inputElement.selectionStart;
         const selectionEnd = inputElement.selectionEnd;
         const inputValue = inputElement.value;
-        const newText = inputValue.substring(0, selectionEnd) + translatedText + inputValue.substring(selectionEnd);
+        const newText = inputValue.substring(0, selectionEnd) + '\n' + translatedText + inputValue.substring(selectionEnd);
 
         inputElement.value = newText;
         inputElement.selectionStart = inputElement.selectionEnd = selectionEnd + translatedText.length;
