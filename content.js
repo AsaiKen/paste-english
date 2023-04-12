@@ -34,8 +34,6 @@ function triggerTranslation(sendResponse) {
 }
 
 document.addEventListener('keydown', (e) => {
-  // ショートカットキーを設定（ここでは、例として Alt + T を使用）
-  console.log({ e });
   if (e.ctrlKey && e.shiftKey && e.key === '1') {
     triggerTranslation();
   }
