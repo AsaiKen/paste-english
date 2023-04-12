@@ -71,10 +71,10 @@ async function translateText(text) {
       return translatedText;
     } else {
       console.error('Request failed:', response.statusText);
-      return text;
+      return null;
     }
   } catch (error) {
     console.error('Request error:', error);
-    return text;
+    return null;
   }
 }

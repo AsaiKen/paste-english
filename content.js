@@ -11,14 +11,18 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
       chrome.runtime.sendMessage({action: 'translateText', text: selectedText}, response => {
         const translatedText = response.translatedText;
+        if (translatedText === null) {
+          alert(`翻訳に失敗しました。再度実行してください。`);
+          return;
+        }
         const selectionStart = inputElement.selectionStart;
         const selectionEnd = inputElement.selectionEnd;
         const inputValue = inputElement.value;
         const newText = inputValue.substring(0, selectionEnd) + '\n' + translatedText + inputValue.substring(selectionEnd);
-
         inputElement.value = newText;
-        inputElement.selectionStart = inputElement.selectionEnd = selectionEnd + translatedText.length;
-
+        // 選択状態を保持する
+        inputElement.selectionStart = selectionStart;
+        inputElement.selectionEnd = selectionEnd;
         // 応答を返す
         sendResponse({success: true});
       });
