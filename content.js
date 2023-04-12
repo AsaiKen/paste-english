@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
       chrome.runtime.sendMessage({action: 'translateText', text: selectedText}, response => {
         const translatedText = response.translatedText;
-        if (translatedText === null) {
+        if (!translatedText) {
           alert(`翻訳に失敗しました。再度実行してください。`);
           return;
         }
