@@ -41,6 +41,7 @@ async function translateText(text) {
       }],
       'lang': {
         'preference': {'weight': {}, 'default': 'default'},
+        "source_lang_computed":"JA",
         'source_lang_user_selected': 'JA',
         'target_lang': 'EN'
       },
