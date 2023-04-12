@@ -20,7 +20,7 @@ function triggerTranslation(sendResponse) {
   if (selectedText.length > 0 && inputElement) {
     // テキストの長さが300文字を超える場合、アラートを表示し、処理を終了します。
     const inputValue = inputElement.value;
-    inputElement.value = inputValue.substring(0, selectionEnd) + '\n(翻訳中...)\n' + inputValue.substring(selectionEnd);
+    inputElement.value = inputValue.substring(0, selectionEnd) + '\n(翻訳中...)' + inputValue.substring(selectionEnd);
     chrome.runtime.sendMessage({ action: 'translateText', text: selectedText }, response => {
       const translatedText = response.translatedText;
       console.log({ translatedText });
@@ -28,7 +28,7 @@ function triggerTranslation(sendResponse) {
         alert(`翻訳に失敗しました。再度実行してください。`);
         return;
       }
-      const newText = inputValue.substring(0, selectionEnd) + '\n' + translatedText + '\n' + inputValue.substring(selectionEnd);
+      const newText = inputValue.substring(0, selectionEnd) + '\n' + translatedText + inputValue.substring(selectionEnd);
       inputElement.value = newText;
       // 選択状態を保持する
       inputElement.selectionStart = selectionStart;
