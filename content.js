@@ -10,7 +10,7 @@ function triggerTranslation(sendResponse) {
     selectedText = selectedText.replace(/\n{2,}/g, '\n');
     inputValue = inputElement.innerText.replace(/\n{2,}/g, '\n');
     selectionStart = inputValue.includes(selectedText) ? inputValue.indexOf(selectedText) : 0;
-    selectionEnd = selectionStart + selectedText.length;
+    selectionEnd = inputValue.includes(selectedText) ? selectionStart + selectedText.length : inputValue.length;
   } else {
     inputValue = inputElement.value;
     selectionStart = inputElement.selectionStart;
