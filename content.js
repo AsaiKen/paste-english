@@ -6,9 +6,10 @@ function triggerTranslation(sendResponse) {
   let selectionStart;
   let selectionEnd;
   if (inputElement.tagName === 'DIV') {
-    inputValue = inputElement.innerText;
-    const selection = window.getSelection();
-    selectionStart = inputValue.indexOf(selectedText, Math.min(selection.anchorOffset, selection.focusOffset));
+    // ブロック要素があると\nが\n\nになる
+    selectedText = selectedText.replace(/\n{2,}/g, '\n');
+    inputValue = inputElement.innerText.replace(/\n{2,}/g, '\n');
+    selectionStart = inputValue.indexOf(selectedText);
     selectionEnd = selectionStart + selectedText.length;
   } else {
     inputValue = inputElement.value;
