@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'translateText') {
     // DeepL APIを使用してテキストを翻訳する関数
     translateText(request.text).then(translatedText => {
-      sendResponse({translatedText: translatedText});
+      sendResponse({ translatedText: translatedText });
     });
     // 応答を非同期で処理するために true を返す
     return true;
@@ -40,13 +40,15 @@ async function translateText(text) {
         'preferred_num_beams': 4
       }],
       'lang': {
-        'preference': {'weight': {}, 'default': 'default'},
-        "source_lang_computed":"JA",
-        'source_lang_user_selected': 'JA',
+        'preference': {
+          "weight": {},
+          'default': 'default'
+        },
+        "source_lang_user_selected": "JA",
         'target_lang': 'EN'
       },
       'priority': 1,
-      'commonJobParams': {'regionalVariant': 'en-US', 'mode': 'translate', 'browserType': 1},
+      'commonJobParams': { 'regionalVariant': 'en-US', 'mode': 'translate', 'browserType': 1 },
       'timestamp': new Date().getTime(),
     },
     // 8桁の数字
