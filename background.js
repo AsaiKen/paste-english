@@ -51,7 +51,7 @@ async function translateText(text) {
   const domain = 'api.deepl.com';
 
   const requestUrl = `https://${domain}/jsonrpc?method=LMT_handle_jobs`;
-  const lines = text.split(/\r?\n/).filter(s => !!s);
+  const lines = text.replace(/。/g, '。\n').split(/\r?\n/).filter(s => !!s);
   const jobs = [];
   for (let i = 0; i < lines.length; i++) {
     jobs.push({
