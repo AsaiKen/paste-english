@@ -116,7 +116,7 @@ async function translateText(text) {
         const originalLine = lines[id];
         const translatedLine = sentence.text;
         console.log({ originalLine, translatedLine });
-        translatedText = translatedText.replace(originalLine, translatedLine);
+        translatedText = translatedText.replace(originalLine, translatedLine + ' ');
       })
       return translatedText;
     } else {
