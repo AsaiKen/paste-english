@@ -32,7 +32,7 @@ function triggerTranslation(sendResponse) {
       inputElement.selectionEnd = selectionEnd;
       // 応答を返す
       if (sendResponse) {
-        sendResponse({ success: true });
+        sendResponse(true);
       }
     });
 
