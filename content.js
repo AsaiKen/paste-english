@@ -13,8 +13,8 @@ function triggerTranslation(sendResponse) {
   if (selectedText.length === 0 || selectionStart === null || selectionEnd === null) {
     alert('選択したテキストを取得できませんでした。');
     return;
-  } else if (selectedText.length > 300) {
-    alert(`一度に翻訳できる日本語は300文字以内です。(${selectedText.length}文字)`);
+  } else if (selectedText.length > 200) {
+    alert(`一度に翻訳できる日本語は200文字以内です。(${selectedText.length}文字)`);
     return;
   }
   if (selectedText.length > 0 && inputElement) {
