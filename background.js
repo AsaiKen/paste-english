@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 async function translateText(text) {
-  const escapedText = text.replace(/\r?\n/g, '${\\n}');
+  const escapedText = text.replace(/\r?\n/g, '{\\n}');
   const requestUrl = 'https://api.deepl.com/jsonrpc?method=LMT_handle_jobs';
   const requestBody = {
     'jsonrpc': '2.0',
@@ -34,7 +34,7 @@ async function translateText(text) {
     'params': {
       'jobs': [{
         'kind': 'default',
-        'sentences': [{'text': escapedText, 'id': 0, 'prefix': ''}],
+        'sentences': [{ 'text': escapedText, 'id': 0, 'prefix': '' }],
         'raw_en_context_before': [],
         'raw_en_context_after': [],
         'preferred_num_beams': 4
@@ -68,7 +68,7 @@ async function translateText(text) {
 
     if (response.ok) {
       const data = await response.json();
-      const translatedText = data.result?.translations[0]?.beams[0]?.sentences[0]?.text.replace(/\${\\n}/g, '\n');
+      const translatedText = data.result?.translations[0]?.beams[0]?.sentences[0]?.text.replace(/{\\n}/g, '\n');
       return translatedText;
     } else {
       console.error('Request failed:', response.statusText);
