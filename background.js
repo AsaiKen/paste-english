@@ -114,9 +114,12 @@ async function translateText(text) {
         let sentence = t.beams[0].sentences[0];
         const id = sentence.ids[0]
         const originalLine = lines[id];
-        const translatedLine = sentence.text;
+        let translatedLine = sentence.text;
+        if (translatedLine.endsWith('.')) {
+          translatedLine += ' ';
+        }
         console.log({ originalLine, translatedLine });
-        translatedText = translatedText.replace(originalLine, translatedLine + ' ');
+        translatedText = translatedText.replace(originalLine, translatedLine);
       })
       return translatedText;
     } else {
