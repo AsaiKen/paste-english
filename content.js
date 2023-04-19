@@ -74,7 +74,7 @@ function triggerTranslation(sendResponse) {
 }
 
 document.addEventListener('keydown', (e) => {
-  console.log(e.ctrlKey, e.shiftKey, e.key);
+  // console.log(e.ctrlKey, e.shiftKey, e.key);
   if (e.ctrlKey && e.shiftKey && (e.key === '1' || e.key === '!')) {
     triggerTranslation();
   }
